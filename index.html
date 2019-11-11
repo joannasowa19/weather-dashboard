@@ -4,17 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./normalize.css" />
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
-    <!-- header (snazzy name) -->
-    <!-- search input box (event on mag glass) -->
-    <!-- list of previous searches on -->
+    <nav class="navbar navbar-light bg-dark flex-row">
+      <!-- search input box (event on mag glass) -->
+      <form class="form-inline col-md-6">
+        <input
+          class="form-control mr-sm-2"
+          id="enter-city"
+          type="text"
+          placeholder="Search City"
+        />
+        <button
+          class="btn btn-outline-success my-2 my-sm-0"
+          id="search-city"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+      <!-- header (snazzy name) -->
+      <h1 class="text-light col-md-6">Weather Dashboard</h1>
+    </nav>
     <!-- current weather status on going -->
-    <!-- 5 day weather outlook -->
+    <div>
+      <div class="flex-row" id="currentWeather">
+        <h3 id="cityName">City Name</h3>
+        <p id="temperature">Temperature :</p>
+        <p id="humidity">Humidity :</p>
+        <p id="windSpeed">Wind Speed :</p>
+      </div>
+      <div>
+        <!-- 5 day weather outlook -->
+        <h3>5-Day Forecast</h3>
+        <div id="futureForecast"></div>
+      </div>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>
