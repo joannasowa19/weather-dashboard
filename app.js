@@ -66,8 +66,55 @@ function displayForecast(response) {
     $("#futureForecast").append(forecastDiv);
   }
 }
+
 // search button click //
+function renderButtons() {
+  $("#search-city").empty();
+  for (i = 0; i < cities.length; i++) {
+    let a = $('<button class="bd-n bgc-white">');
+    a.addClass("city");
+    a.attr("data", cities[i]);
+    a.text(cities[i]);
+    $("#search-city").prepend(a);
+  }
+}
+
 // have city name //
+$("#pick-city").on("click", function(event) {
+  event.preventDefault();
+  city = $("#enter-city")
+    .val()
+    .trim();
+  searchCity(city);
+  forecast(city);
+  cities.push(city);
+  localStorage.setItem("saved", JSON.stringify(cities));
+
+  renderButtons();
+});
+$("form").submit(function(event) {
+  event.preventDefault();
+
+  city = $("#enter-city")
+    .val()
+    .trim();
+  searchCity(city);
+  forecast(city);
+  // add city to array
+  cities.push(city);
+  localStorage.setItem("saved", JSON.stringify(cities));
+
+  renderButtons();
+});
+// ma
+// make click event that will call former city back into search funtion
+
+renderButtons();
+$(document).on("click", ".city", function() {
+  city = $(this).data("name");
+  searchCity(city);
+  forecast(city);
+});
 // send city name to an open weather API //
 // set the weather info to the object returned (see raw data set up) //
 
