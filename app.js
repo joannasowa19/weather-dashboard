@@ -46,6 +46,26 @@ function forecast(city) {
 // render parsed data //
 
 // event functions //
+function displayForecast(response) {
+  $("#futureForecast").html("");
+  for (i = 5; i < response.list.length; i += 8) {
+    forecastDiv = $(
+      `<div class="bds-o m-10px">
+              
+              <div>
+                Temperature: ${response.list[i].main.temp}°F
+              </div>
+              <div>
+                Humidity: ${response.list[i].main.humidity}%
+              </div>
+              <div>
+                Wind: ${response.list[i].wind.speed}MPH
+              </div>
+          </div>`
+    );
+    $("#futureForecast").append(forecastDiv);
+  }
+}
 // search button click //
 // have city name //
 // send city name to an open weather API //
